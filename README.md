@@ -1,7 +1,7 @@
 # install-docker-ubuntu
-Install docker on ubuntu 18.04
 
 faire un update du repository des packages ubuntu  
+
 ```sudo apt-get update```   
 installer les packages htop git et ansible  
 ```sudo apt-get -y install htop git ```  
