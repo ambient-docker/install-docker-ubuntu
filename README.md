@@ -8,7 +8,7 @@ installer les packages htop git et ansible
 si docker est déjà installé on peut le retirer pour partir d'une installation propre  
 ```sudo apt-get remove docker docker-engine docker.io```  
 installation des packages qui gèrent les certificats  
-```sudo apt-get - y install apt-transport-https ca-certificates curl software-properties-common```  
+```sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common```  
 ajout du certificat de docker  
 ```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -```  
 ajout du repo docker   
@@ -18,8 +18,8 @@ mise à jour du repo
 installation de Docker version Community Edition    
 ```sudo apt-get install docker-ce```    
 ajout de votre user au groupe docker 
-```sudo usermod -aG docker votre_user```  ou ```sudo gpasswd -a votre_user docker```
-log out and log in back again de votre shell terminal pour que les changements prennent effet.  
+```sudo usermod -aG docker votre_user```  ou ```sudo gpasswd -a votre_user docker```  
+log out and log in back again de votre shell terminal pour que les changements prennent effet.    
 faire  
  ```docker ps``` 
 
