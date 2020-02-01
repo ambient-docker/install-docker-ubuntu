@@ -116,3 +116,22 @@ et ensuite verifier le bon fonctionnement
 ```shell script
   docker -it -d -p 5000:5000 --name web webflask
 ```
+
+##Slide 46
+```shell script
+docker run -d -p 5000:5000 --name registry registry:2
+docker pull ubuntu
+docker image tag ubuntu localhost:5000/myfirstimage
+docker images
+docker push localhost:5000/myfirstimage
+```
+Verifier avec votre navigateur 
+```http://<ip_hostname>:5000/v2/_catalog```
+
+##Slide 
+```shell script
+doc
+```
+
+
+
