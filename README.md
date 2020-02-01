@@ -1,17 +1,16 @@
 # install-docker-ubuntu
 
-faire un update du repository des packages ubuntu  
-
+faire un update des packages ubuntu   
 ```sudo apt-get update```   
-installer les packages htop git et ansible  
-```sudo apt-get -y install htop git ```  
+installer les packages htop git 
+```sudo apt-get -y install htop git iftop iotop ```  
 si docker est déjà installé on peut le retirer pour partir d'une installation propre  
 ```sudo apt-get remove docker docker-engine docker.io```  
 installation des packages qui gèrent les certificats  
 ```sudo apt-get -y install apt-transport-https ca-certificates curl software-properties-common```  
 ajout du certificat de docker  
 ```curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -```  
-ajout du repo docker   
+ajouter l'acces repo docker d'ubuntu   
 ```sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"```  
 mise à jour du repo   
 ```sudo apt-get update```  
@@ -29,7 +28,7 @@ faire
   docker start mycontainer
   docker attach mycontainer
 ```
-Slide 30 
+##Slide 30 
 ```shell script
 docker run -d --name mytest ubuntu /bin/bash -c "while true; do date ; sleep 5; done"
 docker ps
@@ -39,7 +38,7 @@ docker logs mytest
 docker unpause mytest
 docker logs mytest
 ```
-Slide 31 
+##Slide 31 
 ```shell script
 # pour arrêter tous les containers qui tournent sur votre machine
 docker stop $(docker ps -aq)
@@ -49,7 +48,7 @@ docker rm $(docker ps -aq)
 docker rmi  $(docker images -q)
 ```
 
-Slide 32 
+##Slide 32 
 ```shell script
 docker run -it --name test ubuntu
 touch {abc,def,ghi}
@@ -58,7 +57,7 @@ ls -alrt
 exit
 docker diff test
 ```
-Slide 33
+##Slide 33
 ```shell script
 docker run -it --name test alpine 
 exit
@@ -74,6 +73,36 @@ docker rmi  -f busybox
 docker load --input myfile.tar
 docker images
 ```
+##Slide 35
+```shell script
+ docker run -it ubuntu
+ clear
+ apt-get update
+ apt-get -y install python python-pip vim
+ pip install flask
+ cat > /opt/app.py
+```
+Inserer le script python suivant:  
+```python
+# app.py
+import os
+from flask import Flask
+app = Flask(__name__)
 
+@app.route("/")
+def main():
+    return "Welcome!"
 
+@app.route('/how are you')
+def hello():
+    return 'I am good, how about you?'
 
+if __name__ == "__main__":
+    app.run()
+```
+et ensuite verifier le bon fonctionnement
+```shell script
+   vi /opt/app.py
+   FLASK_APP=/opt/app.py flask run --host=0.0.0.0
+   history
+```
