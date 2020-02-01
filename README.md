@@ -103,6 +103,16 @@ if __name__ == "__main__":
 et ensuite verifier le bon fonctionnement
 ```shell script
    vi /opt/app.py
+   et sortir de vi
    FLASK_APP=/opt/app.py flask run --host=0.0.0.0
    history
+   copier l'historique dans un fichier nomme Dockerfile'
+```
+## Build webflask image
+```shell script
+  docker build -t webflask . 
+```
+## Demarrer le container nomme web 
+```shell script
+  docker -it -d -p 5000:5000 --name web webflask
 ```
