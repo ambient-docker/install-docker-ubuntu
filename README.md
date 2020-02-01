@@ -22,4 +22,58 @@ ajout de votre user au groupe docker
 log out and log in back again de votre shell terminal pour que les changements prennent effet.    
 faire  
  ```docker ps``` 
+ 
+## Slide 29
+```shell script
+  docker run -it --name mycontainer centos /bin/bash
+  docker start mycontainer
+  docker attach mycontainer
+```
+Slide 30 
+```shell script
+docker run -d --name mytest ubuntu /bin/bash -c "while true; do date ; sleep 5; done"
+docker ps
+docker logs mytest
+docker pause mytest
+docker logs mytest
+docker unpause mytest
+docker logs mytest
+```
+Slide 31 
+```shell script
+# pour arrêter tous les containers qui tournent sur votre machine
+docker stop $(docker ps -aq)
+# pour détruire tous vos containers
+docker rm $(docker ps -aq)
+# pour détruire toutes les images 
+docker rmi  $(docker images -q)
+```
+
+Slide 32 
+```shell script
+docker run -it --name test ubuntu
+touch {abc,def,ghi}
+ls 
+ls -alrt
+exit
+docker diff test
+```
+Slide 33
+```shell script
+docker run -it --name test alpine 
+exit
+docker commit test alpine:version3
+docker images
+docker export test > latest.tar
+cat latest.tar | sudo docker import - alpine:v1
+
+docker pull busybox:latest
+docker images
+docker save -o myfile.tar busybox:latest
+docker rmi  -f busybox
+docker load --input myfile.tar
+docker images
+```
+
+
 
